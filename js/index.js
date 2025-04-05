@@ -1,32 +1,13 @@
-const routes = {
-  "/": "pages/home.html",
-  404: "pages/404.html",
-  "/about": "pages/about.html",
-  "/contact": "pages/contact.html",
-};
+import "./router.js";
 
-function route(event) {
-  event = event || window.event;
-  event.preventDefault();
+// const routes = {
+//   "/": "pages/home.html",
+//   404: "pages/404.html",
+//   "/about": "pages/about.html",
+//   "/contact": "pages/contact.html",
+// };
 
-  window.history.pushState({}, "", event.target.href);
+// handle();
 
-  handle();
-}
-function handle() {
-  const { pathname } = window.location;
-  const route = routes[pathname] || routes[404];
-
-  fetch(route)
-    .then((data) => data.text())
-    .then((html) => {
-      document.querySelector("#app").innerHTML = html;
-    })
-    .catch((err) => console.log(err));
-
-  console.log(route);
-}
-handle();
-
-window.onpopstate = () => handle();
-window.route = () => route();
+// window.onpopstate = () => handle();
+// window.route = () => route();
